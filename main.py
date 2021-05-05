@@ -38,7 +38,8 @@ while(True):
       curdateString= curdate.strftime(r"%d-%m-%Y")
       # print('DistrictID - {} ::: Checking for week starting - {}'.format(str(districtID),curdateString))
       URL='https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={}&date={}'.format(districtID,curdateString)
-      responseJson = requests.get(URL).json()
+      headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+      responseJson = requests.get(URL,headers=headers).json()
       if(len(responseJson['centers'])==0):
         break
 
